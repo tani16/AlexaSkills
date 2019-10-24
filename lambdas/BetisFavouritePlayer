@@ -1,0 +1,220 @@
+const Alexa = require('alexa-sdk');
+
+exports.handler = function (event, context, callback) {
+    const alexa = Alexa.handler(event, context, callback);
+    alexa.registerHandlers(handlers);
+    alexa.execute();
+};
+
+const handlers = {
+    'LaunchRequest': function () {
+        
+        this.emit('favouriteBetisPlayer');
+    },
+    
+    'favouriteBetisPlayer': function () {
+        
+       const reprompt = 'Por favor, ¿de qué posición quieres que sea mi jugador favorito?';
+       this.response.speak('Hola, me gustan muchos jugadores del Real Betis Balompié. ¿De qué posición quieres que te diga mi jugador favorito?').listen(reprompt);
+       this.emit(':responseReady');
+     
+    },
+    
+    
+    'AMAZON.HelpIntent': function () {
+        const speechOutput = 'Me estás preguntando cuál es mi jugador favorito del Real Betis Balompié. Puedes elegir la posición para que te responda. Por ejemplo, atacante, defensa, centrocampista o cualquiera...';
+        const reprompt = 'Por favor, ¿de qué posición quieres que sea mi jugador favorito?';
+
+        this.response.speak(speechOutput).listen(reprompt);
+        this.emit(':responseReady');
+    },
+    'AMAZON.CancelIntent': function () {
+        this.response.speak('Hasta la próxima.');
+        this.emit(':responseReady');
+    },
+    'SessionEndedRequest': function () {
+        this.response.speak('Saliendo de la skill');
+        this.emit(':responseReady');
+    },
+    'AMAZON.StopIntent': function () {
+        this.response.speak('Hasta la próxima');
+        this.emit(':responseReady');
+    },
+    'RestartIntents': function(){
+        this.emit('favouriteBetisPlayer');
+    },
+    'AttackIntents': function(){
+        var numero = getRandomInt(7,17);
+        var nombre;
+    
+        if(numero < 9){
+            nombre = alineacionBetis(7);
+        }else if(numero < 13){
+            nombre = alineacionBetis(9);
+        }else{
+            nombre = alineacionBetis(16);
+        }
+        
+        this.emit(':tell','Mi jugador atacante favorito del Real Betis Balompié es ' + nombre + '. Hasta la próxima.');
+    },
+    'MiddleIntents': function(){
+        var numero = getRandomInt(3,22);
+        var nombre;
+    
+        if(numero < 4){
+            nombre = alineacionBetis(3);
+        }else if(numero < 9){
+            nombre = alineacionBetis(8);
+        }else if(numero < 11){
+            nombre = alineacionBetis(10);
+        }else if(numero < 12){
+            nombre = alineacionBetis(11);
+        }else if(numero < 15){
+            nombre = alineacionBetis(14);
+        }else if(numero < 18){
+            nombre = alineacionBetis(17);
+        }else if(numero < 20){
+            nombre = alineacionBetis(18);
+        }else if(numero < 21){
+            nombre = alineacionBetis(20);
+        }else{
+            nombre = alineacionBetis(21);
+        }
+        
+        this.emit(':tell','Mi centrocampista favorito del Real Betis Balompié es ' + nombre + '. Hasta la próxima.');
+    },
+    'DefenseIntents': function(){
+        var numero = getRandomInt(2,24);
+        var nombre;
+    
+        if(numero < 3){
+            nombre = alineacionBetis(2);
+        }else if(numero < 5){
+            nombre = alineacionBetis(4);
+        }else if(numero < 8){
+            nombre = alineacionBetis(5);
+        }else if(numero < 10){
+            nombre = alineacionBetis(6);
+        }else if(numero < 14){
+            nombre = alineacionBetis(12);
+        }else if(numero < 17){
+            nombre = alineacionBetis(15);
+        }else if(numero < 19){
+            nombre = alineacionBetis(19);
+        }else if(numero < 22){
+            nombre = alineacionBetis(22);
+        }else{
+            nombre = alineacionBetis(23);
+        }
+        
+        this.emit(':tell','Mi jugador defensivo favorito del Real Betis Balompié es ' + nombre + '. Hasta la próxima.');
+    },
+    'GoalKeeperIntents': function(){
+        var numero = getRandomInt(1,14);
+        var nombre;
+    
+        if(numero < 10){
+            nombre = alineacionBetis(1);
+        }else{
+            nombre = alineacionBetis(13);
+        }
+        
+        this.emit(':tell','Mi portero favorito del Real Betis Balompié es ' + nombre + '. Hasta la próxima.');
+    },
+    'RandomIntents': function(){
+        var numero = getRandomInt(1,25);
+        var nombre;
+    
+        nombre = alineacionBetis(numero);
+        if(numero == 24){
+            this.emit(':tell', nombre);
+        }else{      
+            this.emit(':tell','Mi portero favorito del Real Betis Balompié es ' + nombre + '. Hasta la próxima.');
+        }
+    }
+    
+    
+};
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function alineacionBetis(numero){
+    var nombre
+    switch (numero) {
+        case 1:
+            nombre = "Joel Robles";
+            break;
+        case 2:
+            nombre = "Francis Guerrero";
+            break;
+        case 3:
+            nombre = "Javi García";
+            break;
+        case 4:
+            nombre = "Feddal";
+            break;
+        case 5:
+            nombre = "Bartra";
+            break;
+        case 6:
+            nombre = "Alfonso Pedraza";
+            break;
+        case 7:
+            nombre = "Juanmi";
+            break;
+        case 8:
+            nombre = "Fekir";
+            break;
+        case 9:
+            nombre = "Borja Iglesias";
+            break;
+        case 10:
+            nombre = "Sergio Canales";
+            break; 
+        case 11:
+            nombre = "Cristian Tello";
+            break;
+        case 12:
+            nombre = "Sidnei";
+            break;   
+        case 13:
+            nombre = "Dani Martin";
+            break;
+        case 14:
+            nombre = "William Carvalho";
+            break;
+        case 15:
+            nombre = "Alex Moreno";
+            break;
+        case 16:
+            nombre = "Loren Morón";
+            break;
+        case 17:
+            nombre = "Joaquín";
+            break;
+        case 18:
+            nombre = "Andrés Guardado";
+            break;
+        case 19:
+            nombre = "Antonio Barragán";
+            break;
+        case 20:
+            nombre = "Diego Lainez";
+            break;
+        case 21:
+            nombre = "Kaptoum";
+            break;
+        case 22:
+            nombre = "Emerson";
+            break;
+        case 23:
+            nombre = "Aissa Mandi";
+            break;
+        default:
+            nombre = "Me gusta todo el equipo. Mucho betis";
+    }
+    
+    return nombre;
+}
