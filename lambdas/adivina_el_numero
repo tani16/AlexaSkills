@@ -1,0 +1,86 @@
+const Alexa = require('alexa-sdk');
+
+exports.handler = function (event, context, callback) {
+    const alexa = Alexa.handler(event, context, callback);
+    alexa.registerHandlers(handlers);
+    alexa.execute();
+};
+
+const handlers = {
+    'LaunchRequest': function () {
+        
+        this.emit('piensa_numero');
+    },
+    
+    'piensa_numero': function () {
+        
+       var guessNumber = getRandomInt(1,100);
+       //var guessNumber = 23;
+       this.attributes['guessNumber'] = guessNumber;
+       this.attributes['countContainer'] = 0;
+       
+       const reprompt = 'Por favor, debes decir un numero de  1   a  100';
+       this.response.speak('Hola, ya estoy pensando un número de 1 a 100. Intenta acertarlo. Tienes solo 7 oportunidades para ganar. Dime un numero ').listen(reprompt);
+       this.emit(':responseReady');
+     
+    },
+    
+    
+    'AMAZON.HelpIntent': function () {
+        const speechOutput = 'Hola, en este juego voy a pensar en un numero entre 1 y 100 y tu tienes que adivinar cual es. Puedes decir stop, para parar en cualquier momento. Puedes decir reinicia para volver a jugar';
+        const reprompt = 'hola, por favor debes decir un numero de  1   a  100';
+
+        this.response.speak(speechOutput).listen(reprompt);
+        this.emit(':responseReady');
+    },
+    'AMAZON.CancelIntent': function () {
+        this.response.speak('Sabía que no podrías ganarme.');
+        this.emit(':responseReady');
+    },
+    'SessionEndedRequest': function () {
+        this.response.speak('Qué fácil te rindes.');
+        this.emit(':responseReady');
+    },
+    'AMAZON.StopIntent': function () {
+        this.response.speak('Qué fácil te rindes.');
+        this.emit(':responseReady');
+    },
+    'NumbersIntents': function(){
+        var getNumber = this.event.request.intent.slots.numero.value;
+        this.attributes['countContainer'] = this.attributes['countContainer'] + 1;
+        
+        if(isNaN(getNumber)){
+            this.attributes['countContainer'] = this.attributes['countContainer'] - 1;
+            this.emit(':ask','No has dicho un número. No juegues con mis sentimientos virtuales.');
+        }
+        else if(this.attributes['guessNumber'] == getNumber){
+            this.emit(':tell','Ganaste, el número era ' + this.attributes['guessNumber'] + '. La próxima vez no podrás ganar.');    
+        }else if(this.attributes['countContainer'] == 7){
+            this.emit(':tell','Perdiste, el número era ' + this.attributes['guessNumber'] + '. Lo siento, nadie puede vencerme.');
+        }else if(this.attributes['guessNumber'] < getNumber){
+            this.emit(':ask', 'El número en el que pienso es menor que ' + getNumber);
+        }else{
+            this.emit(':ask', 'El número en el que pienso es mayor que ' + getNumber);
+        }
+    },
+    'RestartIntents': function(){
+
+        this.attributes['guessNumber'] = 0;
+        this.attributes['countContainer'] = 0;
+        this.emit('piensa_numero');
+
+    },
+    'StartIntents': function(){
+
+        this.attributes['guessNumber'] = 0;
+        this.attributes['countContainer'] = 0;
+        this.emit('piensa_numero');
+
+    }
+    
+};
+
+function getRandomInt(min, max){
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
