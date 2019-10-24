@@ -1,0 +1,297 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "cual es tu jugador favorito del betis",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": [
+                        "alexa cancelar",
+                        "No me gusta ese",
+                        "No quiero saberlo",
+                        "Cancelar"
+                    ]
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": [
+                        "alexa ayuda",
+                        "que hago",
+                        "No entiendo que hacer",
+                        "Ayudame"
+                    ]
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": [
+                        "alexa salir",
+                        "alexa sal",
+                        "parar"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AttackIntents",
+                    "slots": [
+                        {
+                            "name": "AttackPosition",
+                            "type": "attackPosition"
+                        }
+                    ],
+                    "samples": [
+                        "{AttackPosition} por ejemplo",
+                        "que juege de {AttackPosition}",
+                        "por ejemplo {AttackPosition}",
+                        "uno que juege de {AttackPosition}",
+                        "me gustan los {AttackPosition}",
+                        "{AttackPosition}",
+                        "uno que sea {AttackPosition}",
+                        "Uno que juege {AttackPosition}"
+                    ]
+                },
+                {
+                    "name": "MiddleIntents",
+                    "slots": [
+                        {
+                            "name": "Middleposition",
+                            "type": "middlePosition"
+                        }
+                    ],
+                    "samples": [
+                        "{Middleposition} por ejemplo",
+                        "que juege en {Middleposition}",
+                        "me gustan los {Middleposition}",
+                        "por ejemplo {Middleposition}",
+                        "que sea {Middleposition}",
+                        "uno que juege de {Middleposition}",
+                        "{Middleposition}"
+                    ]
+                },
+                {
+                    "name": "GoalKeeperIntents",
+                    "slots": [
+                        {
+                            "name": "GoalKeeperPosition",
+                            "type": "goalKeeperPosition"
+                        }
+                    ],
+                    "samples": [
+                        "por ejemplo {GoalKeeperPosition}",
+                        "{GoalKeeperPosition} por ejemplo",
+                        "en la posición de {GoalKeeperPosition}",
+                        "que sea {GoalKeeperPosition}",
+                        "que juege de {GoalKeeperPosition}",
+                        "{GoalKeeperPosition}"
+                    ]
+                },
+                {
+                    "name": "DefenseIntents",
+                    "slots": [
+                        {
+                            "name": "DefensePosition",
+                            "type": "defensePosition"
+                        }
+                    ],
+                    "samples": [
+                        "{DefensePosition} por ejemplo",
+                        "que juegue en {DefensePosition}",
+                        "por ejemplo {DefensePosition}",
+                        "que sea {DefensePosition}",
+                        "que juegue de {DefensePosition}",
+                        "{DefensePosition} "
+                    ]
+                },
+                {
+                    "name": "RandomIntents",
+                    "slots": [],
+                    "samples": [
+                        "de todos",
+                        "en la que quieres",
+                        "no se",
+                        "donde sea",
+                        "en cualquier posición",
+                        "en cualquiera",
+                        "de todo el equipo",
+                        "que juegue donde sea",
+                        "me da igual"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "attackPosition",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "extremo ofensivo"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "extremo"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "segundo delantero"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "delantero centro"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "ofensivo"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "goleador"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "atacante"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "delantero"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "middlePosition",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "interior"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "mediocampo"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "medio"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "pivote"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "creacion"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "banda"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "mediapunta"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "centrocampista"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "defensePosition",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "zaguero"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "lateral izquierdo"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "lateral derecho"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "libero"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "atrás"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "abajo"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "central"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "lateral"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "defensa"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "goalKeeperPosition",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "porteria"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "paragoles"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "guardameta"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "goalkeeper"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "portero"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
