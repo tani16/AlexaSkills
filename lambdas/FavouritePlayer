@@ -1,0 +1,207 @@
+const Alexa = require('alexa-sdk');
+const Equipo = "Liverpool";
+
+exports.handler = function (event, context, callback) {
+    const alexa = Alexa.handler(event, context, callback);
+    alexa.registerHandlers(handlers);
+    alexa.execute();
+};
+
+const handlers = {
+    'LaunchRequest': function () {
+        
+        this.emit('favouritePlayer');
+    },
+    
+    'favouritePlayer': function () {
+        
+       const reprompt = 'Please, what position would you like my favorite player to play in?';
+       this.response.speak('Hi! I like a lot of the ' + Equipo + ' players. Choose a football position and I will tell you my favourite player from that position.').listen(reprompt);
+       this.emit(':responseReady');
+     
+    },
+    'AMAZON.FallbackIntent': function () {
+        const speechOutput = 'Sorry, I didn´t understand you. Can you repeat?';
+        const reprompt = 'Please, what position would you like my favorite player to play in?';
+
+        this.response.speak(speechOutput).listen(reprompt);
+        this.emit(':responseReady');
+    },
+    'AMAZON.HelpIntent': function () {
+        const speechOutput = 'You are asking me what is my favorite' + Equipo + ' player. You can choose his position for me to respond. For example, forward, defender, midfielder and so on.';
+        const reprompt = 'Please, what position would you like my favorite player to play in?';
+
+        this.response.speak(speechOutput).listen(reprompt);
+        this.emit(':responseReady');
+    },
+    'AMAZON.CancelIntent': function () {
+        this.response.speak('See you later.');
+        this.emit(':responseReady');
+    },
+    'SessionEndedRequest': function () {
+        this.emit(':responseReady');
+    },
+    'AMAZON.StopIntent': function () {
+        this.response.speak('Have a good one.');
+        this.emit(':responseReady');
+    },
+    'RestartIntents': function(){
+        this.emit('favouritePlayer');
+    },
+    'AttackIntents': function(){
+        var numero = getRandomInt(25,36);
+        var nombre = alineacion(numero);
+        
+        this.emit(':tell','My favourite forward player from ' + Equipo + ' is ' + nombre + '. See you later.');
+    },
+    'MiddleIntents': function(){
+        var numero = getRandomInt(19,26);
+        var nombre = alineacion(numero);
+        
+        this.emit(':tell','My favourite midfielder player from ' + Equipo + ' is ' + nombre + '. See you later.');
+    },
+    'DefenseIntents': function(){
+        var numero = getRandomInt(7,19);
+        var nombre = alineacion(numero);
+        this.emit(':tell','My favourite defender player from ' + Equipo + ' is ' + nombre + '. See you later.');
+    },
+    'GoalKeeperIntents': function(){
+        var numero = getRandomInt(1,7);
+        var nombre = alineacion(numero);
+        
+        this.emit(':tell','My favourite goalkeeper player from + Equipo + ' is ' + nombre + '. See you later.');
+    },
+    'RandomIntents': function(){
+        var numero = getRandomInt(1,37);
+        var nombre;
+    
+        nombre = alineacion(numero);
+        
+        if(numero == 36){
+            this.emit(':tell', nombre);
+        }else{      
+            this.emit(':tell','My favourite  player from ' + Equipo +' is ' + nombre + '. See you later.');
+        }
+    }
+    
+    
+};
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function alineacion(numero){
+    var nombre
+    switch (numero) {
+        case 1:
+            nombre = "Alisson";
+            break;
+        case 2:
+            nombre = "Alisson";
+            break;
+        case 3:
+            nombre = "Alisson";
+            break;    
+        case 4:
+            nombre = "Adrián";
+            break;
+        case 5:
+            nombre = "Caoimhin Kelleher";
+            break;
+        case 6:
+            nombre = "Andy Lonergan";
+            break;
+        case 7:
+            nombre = "Virgil van Dijk";
+            break;
+        case 8:
+            nombre = "Virgil van Dijk";
+            break;
+        case 9:
+            nombre = "Virgil van Dijk";
+            break;
+        case 10:
+            nombre = "Suriname";
+            break;
+        case 11:
+            nombre = "Joe Gomez";
+            break;
+        case 12:
+            nombre = "Joel Matip";
+            break;
+        case 13:
+            nombre = "Dejan Lovren";
+            break;
+        case 14:
+            nombre = "Sepp van den Berg";
+            break; 
+        case 15:
+            nombre = "Andrew Robertson";
+            break;
+        case 16:
+            nombre = "Trent Alexander-Arnold";
+            break;   
+        case 17:
+            nombre = "Trent Alexander-Arnold";
+            break; 
+        case 18:
+            nombre = "Nathaniel Clyne";
+            break;
+        case 19:
+            nombre = "Fabinho";
+            break;
+        case 20:
+            nombre = "Georginio Wijnaldum";
+            break;
+        case 21:
+            nombre = "Naby Keïta";
+            break;
+        case 22:
+            nombre = "Jordan Henderson";
+            break;
+        case 23:
+            nombre = "Alex Oxlade-Chamberlain";
+            break;
+        case 24:
+            nombre = "James Milner";
+            break;
+        case 25:
+            nombre = "Adam Lallana";
+            break;
+        case 26:
+            nombre = "Sadio Mané";
+            break;
+        case 27:
+            nombre = "Mohamed Salah";
+            break;
+        case 28:
+            nombre = "Xherdan Shaqiri";
+            break;
+        case 29:
+            nombre = "Roberto Firmino";
+            break;
+        case 30:
+            nombre = "Divock Origi";
+            break;
+        case 31:
+            nombre = "Sadio Mané";
+            break;
+        case 32:
+            nombre = "Mohamed Salah";
+            break;
+        case 33:
+            nombre = "Sadio Mané";
+            break;
+        case 34:
+            nombre = "Mohamed Salah";
+            break;
+        case 35:
+            nombre = "Roberto Firmino";
+            break;
+        default:
+            nombre = "I like everything about Liverpool. Liverpool will never walk alone!";
+    }
+    
+    return nombre;
+}
