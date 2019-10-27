@@ -1,0 +1,268 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "what is your favourite manchester united player",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": [
+                        "alexa cancelar",
+                        "No me gusta ese",
+                        "No quiero saberlo",
+                        "Cancelar"
+                    ]
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": [
+                        "alexa ayuda",
+                        "que hago",
+                        "No entiendo que hacer",
+                        "Ayudame"
+                    ]
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": [
+                        "alexa salir",
+                        "alexa sal",
+                        "parar"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AttackIntents",
+                    "slots": [
+                        {
+                            "name": "AttackPosition",
+                            "type": "attackPosition"
+                        }
+                    ],
+                    "samples": [
+                        "to be {AttackPosition}",
+                        "{AttackPosition} for example",
+                        "play in {AttackPosition}",
+                        "for example {AttackPosition}",
+                        "i like players who play in {AttackPosition}",
+                        "i like {AttackPosition}",
+                        "{AttackPosition}"
+                    ]
+                },
+                {
+                    "name": "MiddleIntents",
+                    "slots": [
+                        {
+                            "name": "Middleposition",
+                            "type": "middlePosition"
+                        }
+                    ],
+                    "samples": [
+                        "{Middleposition} for example",
+                        "to play in {Middleposition}",
+                        "I like players who play in {Middleposition}",
+                        "for example {Middleposition}",
+                        "to be {Middleposition}",
+                        "{Middleposition}"
+                    ]
+                },
+                {
+                    "name": "GoalKeeperIntents",
+                    "slots": [
+                        {
+                            "name": "GoalKeeperPosition",
+                            "type": "goalKeeperPosition"
+                        }
+                    ],
+                    "samples": [
+                        "i like players who play in {GoalKeeperPosition}",
+                        "for example {GoalKeeperPosition}",
+                        "{GoalKeeperPosition} for example",
+                        "in the position of {GoalKeeperPosition}",
+                        "to be {GoalKeeperPosition}",
+                        "to play in {GoalKeeperPosition}",
+                        "{GoalKeeperPosition}"
+                    ]
+                },
+                {
+                    "name": "DefenseIntents",
+                    "slots": [
+                        {
+                            "name": "DefensePosition",
+                            "type": "defensePosition"
+                        }
+                    ],
+                    "samples": [
+                        "{DefensePosition} for example",
+                        "to play as {DefensePosition}",
+                        "for example {DefensePosition}",
+                        "to be {DefensePosition}",
+                        "to play in {DefensePosition}",
+                        "{DefensePosition} "
+                    ]
+                },
+                {
+                    "name": "RandomIntents",
+                    "slots": [],
+                    "samples": [
+                        "Whatever you want",
+                        "I don't care",
+                        "anyone",
+                        "any position you want",
+                        "whatever",
+                        "I don't know",
+                        "I don't mind"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "attackPosition",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Right Winger"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Winger"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Left Winger"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Centre-Forward"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Forward"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "scorer"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "goal scorer"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "striker"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "middlePosition",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "pivot"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Attacking Midfield"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Central Midfield"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Defensive Midfield"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Midfield"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "creative"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "defensePosition",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Right-Back"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Left-Back"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Centre-Back"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "back"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "defender"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "sweeper"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "goalKeeperPosition",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "goal"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "keeper"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "goalie"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "goalkeeper"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
